@@ -1,0 +1,398 @@
+<hmtl>
+    <body style="background-color: #333339; color: #dddddd">
+        <div id="x1"></div>
+    </body>
+    <script>
+        let data = [[1, -9, -4, 5, 9, 15, -14, -9, 7, 16, 26, -26, 37, 0.01, -4, 3, 5, -7, -4, 4, 6, -14, 18, 0.01],
+                    [8, -6, -7, -16, 0, 15, -14, -2, 1, 19, 28, -24, 36, 0.001, 2, 4, 4, -9, -2, 2, 8, -18, 11, 0.001],
+                    [11, 14, -19, -6, 11, -17, -15, -1, 9, 10, 21, -26, 37, 0.01, 5, -4, -5, -8, -5, 4, 6, -16, 14, 0.01],
+                    [12, 5, 6, 7, 10, -18, -11, -4, 7, 18, 26, -28, 32, 0.001, 2, -1, -4, -8, -3, 1, 6, -20, 12, 0.001],
+                    [13, -10, -14, 8, 13, 10, -18, -10, 5, 14, 28, -30, 33, 0.01, 0, 5, 5, -10, -4, 5, 10, -12, 17, 0.01],
+                    [15, -16, -15, -13, 4, 9, -18, -2, 6, 18, 24, -21, 35, 0.01, 2, 3, 3, -6, -4, 1, 10, -13, 16, 0.01],
+                    [17, 6, -13, -16, -12, 14, -16, -6, 9, 15, 24, -27, 40, 0.01, -2, 5, -5, -6, -3, 3, 10, -15, 16, 0.01],
+                    [18, 4, 2, 10, 11, -2, -11, -4, 7, 11, 28, -30, 34, 0.001, 2, 0, -3, -10, -5, 4, 8, -17, 15, 0.001],
+                    [19, 4, 2, 18, 1, 14, -20, -4, 4, 16, 29, -23, 31, 0.01, -3, 3, 5, -10, 0, 3, 10, -12, 20, 0.01],
+                    [21, 12, -1, 2, -6, 16, -15, -2, 4, 13, 25, -22, 39, 0.01, -3, 0, 0, -10, -1, 2, 10, -20, 18, 0.01],
+                    [23, 20, 14, -10, 18, 4, -11, -6, 2, 17, 29, -27, 39, 0.01, -2, -4, 4, -6, -3, 4, 7, -11, 14, 0.01],
+                    [25, 12, 5, -4, -1, 2, -17, -5, 5, 12, 29, -26, 39, 0.01, -1, -5, 4, -10, -1, 5, 8, -20, 11, 0.01],
+                    [26, 18, -2, 11, 7, -20, -12, -9, 7, 17, 24, -21, 36, 0.001, 0, -1, 3, -10, -2, 3, 9, -18, 13, 0.001],
+                    [33, -10, 18, 20, -4, 5, -18, -2, 3, 14, 26, -24, 32, 0.01, 3, 5, -5, -7, -3, 1, 7, -16, 18, 0.01],
+                    [37, -19, 18, 0, 13, 7, -15, -2, 8, 10, 27, -29, 40, 0.01, 1, -2, 4, -9, 0, 4, 7, -17, 14, 0.01],
+                    [39, 19, 8, -8, -18, 1, -19, -4, 10, 17, 24, -25, 40, 0.01, -4, 0, 5, -7, -3, 1, 9, -19, 20, 0.01],
+                    [42, -1, -5, 12, 18, 7, -20, -6, 5, 15, 24, -21, 37, 0.001, -1, 3, 2, -9, -4, 1, 7, -20, 13, 0.001]];
+                
+        
+        let tempData = ["1	-9	-4	5	9	15	-14	-9	7	16	26	-26	37	0.01	-4	3	5	-7	-4	4	6	-14	18	0.01",
+"2	19	-9	17	11	18	-18	-9	4	14	24	-24	36	0.001	-1	-5	4	-8	-1	5	9	-17	14	0.001",
+"3	-14	9	16	-11	4	-17	-8	7	15	26	-22	40	0.01	-3	3	4	-9	-3	1	10	-14	16	0.01",
+"4	17	-18	-3	6	-18	-12	-5	7	15	27	-21	39	0.001	2	1	4	-10	-1	2	6	-16	18	0.001",
+"5	20	-16	-1	-12	-8	-19	-7	5	11	23	-27	39	0.01	2	-3	4	-7	-2	2	6	-17	16	0.01",
+"6	1	19	-17	18	-9	-16	-3	2	17	28	-25	39	0.001	-5	0	-4	-9	-2	5	10	-18	14	0.001",
+"7	11	13	17	13	2	-11	-1	8	20	29	-28	40	0.01	1	5	-3	-8	-1	3	8	-18	19	0.01",
+"8	-6	-7	-16	0	15	-14	-2	1	19	28	-24	36	0.001	2	4	4	-9	-2	2	8	-18	11	0.001",
+"9	-10	-20	-10	9	12	-13	-1	9	11	27	-27	34	0.01	2	-2	-3	-10	-4	1	7	-19	11	0.01",
+"10	6	15	6	-18	-18	-16	-10	1	14	24	-30	35	0.001	1	-5	0	-10	-1	2	10	-18	12	0.001",
+"11	14	-19	-6	11	-17	-15	-1	9	10	21	-26	37	0.01	5	-4	-5	-8	-5	4	6	-16	14	0.01",
+"12	5	6	7	10	-18	-11	-4	7	18	26	-28	32	0.001	2	-1	-4	-8	-3	1	6	-20	12	0.001",
+"13	-10	-14	8	13	10	-18	-10	5	14	28	-30	33	0.01	0	5	5	-10	-4	5	10	-12	17	0.01",
+"14	-17	-10	-7	-2	-13	-16	-7	1	19	28	-21	33	0.001	-4	5	-4	-10	-5	1	8	-17	17	0.001",
+"15	-16	-15	-13	4	9	-18	-2	6	18	24	-21	35	0.01	2	3	3	-6	-4	1	10	-13	16	0.01",
+"16	12	-11	-6	-16	-20	-12	-6	2	10	25	-21	37	0.001	-5	3	-2	-6	0	3	7	-18	12	0.001",
+"17	6	-13	-16	-12	14	-16	-6	9	15	24	-27	40	0.01	-2	5	-5	-6	-3	3	10	-15	16	0.01",
+"18	4	2	10	11	-2	-11	-4	7	11	28	-30	34	0.001	2	0	-3	-10	-5	4	8	-17	15	0.001",
+"19	4	2	18	1	14	-20	-4	4	16	29	-23	31	0.01	-3	3	5	-10	0	3	10	-12	20	0.01",
+"20	15	5	20	16	-11	-15	-5	5	19	29	-21	36	0.001	-2	-4	-3	-8	-3	3	9	-12	16	0.001",
+"21	12	-1	2	-6	16	-15	-2	4	13	25	-22	39	0.01	-3	0	0	-10	-1	2	10	-20	18	0.01",
+"22	12	16	-11	-17	15	-19	-3	2	20	30	-29	33	0.001	4	3	0	-9	-1	2	8	-12	12	0.001",
+"23	20	14	-10	18	4	-11	-6	2	17	29	-27	39	0.01	-2	-4	4	-6	-3	4	7	-11	14	0.01",
+"24	15	-18	4	-7	15	-18	-7	4	16	23	-28	34	0.001	2	1	1	-9	-4	5	9	-17	14	0.001",
+"25	12	5	-4	-1	2	-17	-5	5	12	29	-26	39	0.01	-1	-5	4	-10	-1	5	8	-20	11	0.01",
+"26	18	-2	11	7	-20	-12	-9	7	17	24	-21	36	0.001	0	-1	3	-10	-2	3	9	-18	13	0.001",
+"27	1	-6	-10	-20	-19	-14	-8	8	20	23	-26	38	0.01	-1	-1	-5	-9	0	4	10	-13	14	0.01",
+"28	-9	17	-17	-1	-4	-16	-6	7	12	30	-24	40	0.001	5	1	0	-10	-4	3	6	-15	14	0.001",
+"29	-14	5	17	0	2	-16	-9	4	20	26	-25	33	0.01	-2	4	3	-9	0	3	9	-13	11	0.01",
+"30	-18	-4	-14	16	6	-13	-5	1	18	29	-29	34	0.001	0	-1	-2	-7	-5	3	9	-19	16	0.001",
+"31	-14	20	-12	-6	-13	-19	-5	7	20	22	-25	33	0.01	-2	5	-3	-8	-3	3	6	-14	18	0.01",
+"32	-4	-5	14	12	2	-13	-9	7	13	24	-30	36	0.001	-1	-2	2	-9	-4	3	6	-14	19	0.001",
+"33	-10	18	20	-4	5	-18	-2	3	14	26	-24	32	0.01	3	5	-5	-7	-3	1	7	-16	18	0.01",
+"34	14	-19	-3	-10	-15	-19	-8	4	19	24	-23	33	0.001	3	4	-1	-9	-1	2	9	-15	16	0.001",
+"35	2	-8	10	-12	-6	-12	-8	6	12	22	-24	36	0.01	-5	-4	5	-9	-5	2	9	-20	18	0.01",
+"36	10	20	9	2	18	-20	-10	9	12	26	-30	40	0.001	2	-1	-3	-10	-3	5	7	-13	14	0.001",
+"37	-19	18	0	13	7	-15	-2	8	10	27	-29	40	0.01	1	-2	4	-9	0	4	7	-17	14	0.01",
+"38	7	-13	7	-3	1	-12	-6	6	16	22	-25	36	0.001	1	-2	5	-6	-5	4	6	-13	11	0.001",
+"39	19	8	-8	-18	1	-19	-4	10	17	24	-25	40	0.01	-4	0	5	-7	-3	1	9	-19	20	0.01",
+"40	-3	-16	19	14	-15	-13	-9	6	11	22	-22	37	0.001	1	-5	2	-10	-4	3	7	-17	14	0.001",
+"41	0	16	4	-18	2	-20	-3	8	16	26	-21	36	0.01	-5	-3	-4	-8	-5	2	6	-13	19	0.01",
+"42	-1	-5	12	18	7	-20	-6	5	15	24	-21	37	0.001	-1	3	2	-9	-4	1	7	-20	13	0.001",
+"43	-13	1	-2	19	9	-20	-4	3	16	30	-22	38	0.01	3	-1	-3	-9	-1	2	6	-16	11	0.01",
+"44	11	0	0	17	-15	-14	-6	5	17	21	-28	35	0.001	-5	3	5	-9	-3	3	6	-17	11	0.001",
+"45	5	11	-15	-11	-5	-18	-9	10	14	30	-22	34	0.01	3	-5	-1	-9	-4	3	7	-19	20	0.01",
+"46	18	-18	15	-12	19	-12	-10	5	16	23	-23	34	0.001	2	4	5	-8	-2	3	10	-17	11	0.001",
+"47	16	-1	-6	13	0	-20	-5	10	13	26	-29	32	0.01	2	-3	1	-9	-3	1	8	-17	19	0.01",
+"48	-14	5	-17	0	13	-20	-7	10	14	24	-25	37	0.001	4	-4	1	-9	-2	5	6	-20	12	0.001",
+"49	9	-7	3	3	14	-16	-4	2	19	30	-23	40	0.01	5	-5	3	-10	-2	3	8	-14	16	0.01",
+"50	8	-7	18	-7	-6	-17	-4	10	14	26	-29	31	0.001	-2	5	4	-8	0	2	8	-20	20	0.001",
+"51	0	-10	9	3	4	-15	-3	10	19	23	-24	40	0.01	-5	-4	0	-9	-4	3	7	-20	18	0.01",
+"52	-9	7	-9	14	-10	-20	-10	8	19	24	-26	37	0.001	3	-4	5	-10	-2	5	8	-18	18	0.001",
+"53	14	-9	10	-8	13	-20	-8	5	20	26	-23	36	0.01	-5	-4	3	-10	-3	3	10	-15	18	0.01",
+"54	20	-17	5	12	-19	-17	-6	10	17	23	-26	34	0.001	-1	0	0	-6	0	4	9	-13	15	0.001",
+"55	-18	20	-4	3	-11	-14	-8	5	16	25	-29	39	0.01	-4	-1	2	-10	0	2	10	-12	19	0.01",
+"56	12	17	-6	18	16	-12	-1	1	11	25	-25	40	0.001	-3	0	-5	-7	-5	4	7	-19	12	0.001",
+"57	-8	19	-9	13	-7	-18	-1	2	15	24	-26	31	0.01	3	-2	0	-7	-5	1	7	-15	15	0.01",
+"58	8	0	-2	9	-17	-13	-4	5	18	25	-21	36	0.001	5	3	-2	-9	-2	2	7	-17	19	0.001",
+"59	1	4	-1	-6	-19	-20	-5	8	16	28	-25	35	0.01	-4	1	5	-10	0	4	10	-18	20	0.01",
+"60	12	20	12	20	1	-17	-3	10	15	24	-27	34	0.001	-5	5	0	-7	-3	2	9	-13	16	0.001",
+];
+        let newVal = new Array(60).fill([]);
+        let coaie;
+        for(let i = 0; i < tempData.length; i++) {
+            coaie = tempData[i].split(" ");
+            console.log(parseInt(coaie[3])+ "  ========  " + coaie + "      ");
+            for(let j = 1; j < 6; j++)
+                newVal[i][j-1] = parseInt(coaie[j]);
+        }
+        function verify(row) {
+            let sum = 0;
+            for(let i = 1 ; i < 6 ; i++)
+                sum += newVal[row][i];
+            //document.getElementById("x1").innerHTML += sum + "\n";
+        }
+        
+        for(let i = 0; i < newVal.length; i++)
+            verify(i);
+        
+        
+        function outputResult(convoAmp, convoT, target, convolution) {
+            let output = "", symbol;
+            if (convolution == 1)
+                symbol = "δ";
+            else
+                symbol = "σ";
+            for (let i = 0; i < convoAmp.length; i++) {
+                if (convoAmp[i] > 0)
+                    output += " + " + convoAmp[i];
+                else
+                    output += " - " + convoAmp[i].toString().slice(1);
+
+                if (convoT[i] > 0)
+                    output += symbol + "( t - " + convoT[i] + " ) ";
+                else
+                    output += symbol + "( t + " + convoT[i].toString().slice(1) + " ) ";
+            }
+            if (output.charAt(1) == '+')
+                output = output.slice(2);
+            output = "<br><div>x1 * x" + convolution + " = " + output + "</div>";
+            document.getElementById(target).innerHTML += output;
+        }
+        
+        function solve(outputIndex, convoAmp, convoT, convolution) {
+            let target = "x1";
+            
+            document.getElementById("x1").innerHTML += "<br>x1 * x" + convolution + " = (" + x1.slice(6) + ") * x" + convolution + "<br><br>";
+            
+            let sum = "";
+            for (let i = 0; i < 5; i++) {
+                if (values[i] > 0)
+                    sum += " + " + values[i];
+                else
+                    sum += " - " + values[i].toString().slice(1);
+
+                if (values[i+5] > 0)
+                    sum += "x" + convolution + "( t - " + values[i+5] + " ) ";
+                else
+                    sum += "x" + convolution + "( t + " + values[i+5].toString().slice(1) + " ) ";
+            }
+            document.getElementById("x1").innerHTML += "x1 * x" + convolution + " = " + sum.slice(2) + "<br>";
+            
+            outputResult(convoAmp, convoT, target, convolution);
+            
+            let newConvoAmp = [], newConvoT = [];
+            for (let i = 0; i < convoAmp.length; i++) {
+                if (newConvoT.includes(convoT[i])) {
+                    newConvoAmp[newConvoT.indexOf(convoT[i])] += convoAmp[i];
+                }
+                else {
+                    newConvoAmp[newConvoAmp.length] = convoAmp[i];
+                    newConvoT[newConvoT.length] = convoT[i];
+                }
+            }
+            outputResult(newConvoAmp, newConvoT, target, convolution);
+
+            let sortedNewConvoT = newConvoT.slice(),
+                sortedNewConvoAmp = [];
+            sortedNewConvoT = sortedNewConvoT.sort(function(a, b){return a-b});
+
+            for (let i = 0; i < newConvoAmp.length; i++)
+                sortedNewConvoAmp[i] = newConvoAmp[newConvoT.indexOf(sortedNewConvoT[i])];
+            
+            outputResult(sortedNewConvoAmp, sortedNewConvoT, target, convolution);
+            document.getElementById("x1").innerHTML += "<br><br>";
+            return sortedNewConvoAmp.concat(sortedNewConvoT);
+        }
+        
+        let values = [], team, x1, symbol;
+        
+        for (let i = 0; i < data.length; i++) {
+            team = data[i][0];
+            let extraValue = [0 - (data[i][14] + data[i][15] + data[i][16])];
+            values = data[i].slice(1, 11).concat(data[i].slice(14, 17)).concat(extraValue).concat(data[i].slice(17, 21));
+            plots = data[i].slice(11,14).concat(data[i].slice(21,24));
+            
+            x1 = ""; symbol = "δ";
+            for(let i=0; i<5; i++) {
+                if(values[i] >= 0)
+                    x1 += " + " + values[i];
+                else
+                    x1 += " - " + values[i].toString().slice(1);
+                if(values[i+5] < 0)
+                    x1 += symbol + "(t + " + values[i+5].toString().slice(1) + ")";
+                else
+                    x1 += symbol + "(t - " + values[i+5] + ")";
+            }
+            if (x1.charAt(1) == '+')
+                x1 = "x1 = " + x1.slice(2);
+            else
+                x1 = "x1 = " + x1;
+
+            let x2 = ""; symbol = "σ";
+            for(let i=0; i<4; i++) {
+                if(values[10+i] >= 0)
+                    x2 += " + " + values[10+i];
+                else
+                    x2 += " - " + values[10+i].toString().slice(1);
+                if(values[i+14] < 0)
+                    x2 += symbol + "(t + " + values[i+14].toString().slice(1) + ")";
+                else
+                    x2 += symbol + "(t - " + values[i+14] + ")";
+            }
+            if (x2.charAt(1) == '+')
+                x2 = "x2 = " + x2.slice(2);
+            else
+                x2 = "x2 = " + x2;
+            
+            input1 = document.getElementById("x1");
+            input1.innerHTML += "<h1>TEAM " + team + "</br>";
+            input1.innerHTML += x1 + "<br>";
+            input1.innerHTML += x2 + "<br>";
+            
+            let convoAmp1 = [];
+            for (let i = 0; i < 5; i++)
+                for (let j = 0; j < 5; j++)
+                    convoAmp1[i*5 + j] = values[i]*values[j];
+
+            let convoT1 = [];
+            for (let i = 5; i < 10; i++)
+                for (let j = 5; j < 10; j++)
+                    convoT1[(i-5)*5+j-5] = values[i]+values[j];
+
+            let convo1Values = solve(1, convoAmp1, convoT1, 1);
+
+			
+
+            let convoAmp2 = [];
+            for (let i = 0; i < 5; i++)
+                for (let j = 10; j < 14; j++)
+                    convoAmp2[i*4 + j-10] = values[i]*values[j];
+
+            let convoT2 = [];
+            for (let i = 5; i < 10; i++)
+                for (let j = 14; j < 18; j++)
+                    convoT2[(i-5)*4 + j-14] = values[i]+values[j];
+
+            let convo2Values = solve(2, convoAmp2, convoT2, 2);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            input1.innerHTML += "clear all<br>";
+            input1.innerHTML += "close all<br><br>";
+
+            input1.innerHTML += "[x11,t1] = impuls(" + plots[0] + ", " + plots[1] + ", " + plots[2] + ",  " + values[5] + ");<br>";
+            input1.innerHTML += "[x12,t1] = impuls(" + plots[0] + ", " + plots[1] + ", " + plots[2] + ",  " + values[6] + ");<br>";
+            input1.innerHTML += "[x13,t1] = impuls(" + plots[0] + ", " + plots[1] + ", " + plots[2] + ",  " + values[7] + ");<br>";
+            input1.innerHTML += "[x14,t1] = impuls(" + plots[0] + ", " + plots[1] + ", " + plots[2] + ",  " + values[8] + ");<br>";
+            input1.innerHTML += "[x15,t1] = impuls(" + plots[0] + ", " + plots[1] + ", " + plots[2] + ",  " + values[9] + ");<br>";
+            input1.innerHTML += "x1 = " + values[0] + "*x11 + " + values[1] + "*x12 + " + values[2] + "*x13 + " + values[3] + "*x14 + " + values[4] + "*x15;<br>";
+            input1.innerHTML += "figure<br>";
+            input1.innerHTML += "plot(t1,x1), xlabel('time'), ylabel('x1'), grid<br><br>";
+
+            input1.innerHTML += "[x21,t2] = step(" + plots[3] + ", " + plots[4] + ", " + plots[5] + ",  " + values[14] + ");<br>";
+            input1.innerHTML += "[x22,t2] = step(" + plots[3] + ", " + plots[4] + ", " + plots[5] + ",  " + values[15] + ");<br>";
+            input1.innerHTML += "[x23,t2] = step(" + plots[3] + ", " + plots[4] + ", " + plots[5] + ",  " + values[16] + ");<br>";
+            input1.innerHTML += "[x24,t2] = step(" + plots[3] + ", " + plots[4] + ", " + plots[5] + ",  " + values[17] + ");<br>";
+            input1.innerHTML += "x2 = " + values[10] + "*x21 + " + values[11] + "*x22 + " + values[12] + "*x23 + " + values[13] + "*x24;<br>";
+            input1.innerHTML += "figure<br>";
+            input1.innerHTML += "plot(t2,x2), xlabel('time'), ylabel('x2'), grid<br><br>";
+
+            input1.innerHTML += "conv11 = conv(x1, x1);<br>"
+            input1.innerHTML += "tconv11 = 2*t1(1):" + plots[2] + ":(2*t1(end));<br>";
+            input1.innerHTML += "figure<br>";
+            input1.innerHTML += "plot(tconv11, conv11), xlabel('time'), ylabel('(x1*x1)(t)');<br>";
+            input1.innerHTML += "grid on;<br><br>";
+
+            input1.innerHTML += "conv12=conv(x1,x2);<br>";
+            input1.innerHTML += "tconv12=(t1(1)+t2(1)):" + plots[5] + ":(t1(end)+t2(end));<br>";
+            input1.innerHTML += "figure<br>";
+            input1.innerHTML += "plot(tconv12, conv12), xlabel('time'), ylabel ('(x1*x2)(t)');<br>";
+            input1.innerHTML += "grid on;<br><br>";
+
+            input1.innerHTML += "function [y,x] = impuls(li,ls,step,k)<br>";
+            input1.innerHTML += "    x=li:step:ls;<br>";
+            input1.innerHTML += "    L = length(x);<br>";
+            input1.innerHTML += "    y = zeros(1,L);<br>";
+            input1.innerHTML += "    y((k-li)/step) = 1;<br>";
+            input1.innerHTML += "end<br><br>";
+
+            input1.innerHTML += "function [y,x] = step(li,ls,ste,k)<br>";
+            input1.innerHTML += "    x=li:ste:ls;<br>";
+            input1.innerHTML += "    L = length(x);<br>";
+            input1.innerHTML += "    y = zeros(1,L);<br>";
+            input1.innerHTML += "    start=(k-li)/ste;<br>";
+            input1.innerHTML += "    y((start+1):L)=ones(size((start+1):L));<br>";
+            input1.innerHTML += "end<br><br>";
+
+            
+            /*let convolution = 1;
+            
+            input1.innerHTML += "<br> <h3>MATLAB:</h3>close all<br><br>";
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            function getMatlabInfo(values, plots, convolution, step, isConvolution) {
+
+              	let start = values.length/2,
+                    zeros = [(Math.abs(plots[(convolution-1)*3+0] - values[start]) / plots[(convolution-1)*3+2])],
+                    X = "x";
+                
+                if (isConvolution)
+                    X += "1x";
+                
+                for (let i = start; i < values.length-1; i++)
+                    zeros[zeros.length] = (Math.abs(values[i]-values[i+1]) / plots[(convolution-1)*3+2] - 1);
+                
+                zeros[zeros.length] = (Math.abs(values[values.length-1]-plots[(convolution-1)*3+1]) / plots[(convolution-1)*3+2] - 1);
+
+                input1.innerHTML += X + convolution + " = [";
+
+              	let valuesSum = 0;
+				if(step)
+                    for (let i = 0; i < start; i++) {
+                        input1.innerHTML += " zeros(1, " + (zeros[i]+1) + ") + " + valuesSum;
+                        valuesSum += values[i];
+                    }
+                else
+                    for (let i = 0; i < start; i++)
+                        input1.innerHTML += " zeros(1, " + zeros[i] + ") " + values[i];
+                
+				if(step)
+                	input1.innerHTML += " zeros(1, " + zeros[zeros.length-1] + ") + " + valuesSum + "];<br>";
+                else
+                	input1.innerHTML += " zeros(1, " + zeros[zeros.length-1] + ") ];<br>";
+
+                input1.innerHTML += "<br>figure<br>plot(" + X + convolution + ")<br>";
+
+
+
+
+                let add = "xticks( [ ";
+                for (let i = 0; i < Math.abs(plots[(convolution-1)*3+1]-plots[(convolution-1)*3]); i += 5) {
+                    add += ((i+(Math.abs(plots[(convolution-1)*3])%5))/plots[(convolution-1)*3+2]) + ", ";
+                }
+                add = add.slice(0, add.length-2);
+                add += " ] )<br>";
+                input1.innerHTML += add;
+
+                add = "xticklabels( { ";
+                for (let i = 0; i < Math.abs(plots[(convolution-1)*3+1]-plots[(convolution-1)*3]); i += 5) {
+                    add += (plots[(convolution-1)*3] + i + (Math.abs(plots[(convolution-1)*3])%5)) + ", ";
+                }
+                add = add.slice(0, add.length-2);
+                add += " } )<br>";
+
+                input1.innerHTML += add;
+
+
+
+
+                input1.innerHTML += "grid on<br>xlabel('time')<br>ylabel('" + X + convolution + "')<br>title(\"" + X + convolution + "\")<br><br><br>";
+            }
+            getMatlabInfo(values.slice(0,10), plots, 1, false, false);
+            getMatlabInfo(values.slice(10,18), plots, 2, false, false);
+            getMatlabInfo(values.slice(0,10), plots, 1, true, false);
+            getMatlabInfo(values.slice(10,18), plots, 2, true, false);
+            
+            let convoPlot1 = [],
+            	convoPlot2 = [];
+            for (let i = 0; i < 2; i++) {
+            	convoPlot1[i] = plots[i]*2;
+                convoPlot2[i] = plots[i]+plots[i+3];
+            }
+            convoPlot1[2] = plots[2];
+            convoPlot2[2] = plots[5];
+            convoPlot2 = convoPlot2.concat(convoPlot2);
+            
+            getMatlabInfo(convo1Values, convoPlot1, 1, false, true);
+            getMatlabInfo(convo2Values, convoPlot2, 2, false, true);
+            getMatlabInfo(convo1Values, convoPlot1, 1, true, true);
+            getMatlabInfo(convo2Values, convoPlot2, 2, true, true);
+            
+            input1.innerHTML += "<br><br><br><br><br>";
+            */
+        }
+    </script>
+</hmtl>

@@ -1,0 +1,158 @@
+1112 00 01 50       plr lpr prl
+1121 02 03 51 52 53 lrp lrP rpl rlp rlP
+1221 10 11 60       plr lpr prl
+1222 71 33 83       rpl lrP rlP
+1231 22 72          lrp rlp
+2112 12 61 62       lrp rpl rlp
+2122 20 70          plr prl
+2131 13 63 21       lrP rlP lpr
+2231 30 80 81       plr prl rpl
+2232 41 42 43 92 93 lpr lrp lrP rlp rlP
+3112 23 73 31 32    lrP rlP lpr lrp
+3122 82             rlp
+3132 40 90 91       plr prl rpl
+
+
+
+
+1112 00 01 50       plr lpr prl         v
+1121 02 03 51 52 53 lrp lrP rpl rlp rlP v
+1221 10 11 60       plr lpr prl         v
+1222 33 71 83       lrP rpl rlP         v
+1231 22 72          lrp rlp             v
+2112 12 61 62       lrp rpl rlp         v
+2122 20 70          plr prl             v
+2131 13 21 63       lrP plr rlP         v
+2231 30 80 81       plr prl rpl         v
+2232 41 42 43 92 93 lpr lrp lrP rlp rlP v
+3112 23 73          lrP rlP
+3122 31 32 82       lpr lrp rlp
+3132 40 90 91       plr prl rpl
+
+
+<50
+0 = plr
+1 = lpr
+2 = lrp
+3 = lrP
+>50
+0 = prl
+1 = rpl
+2 = rlp
+3 = rlP
+
+3122 lpr lrp prl rpl
+3132 plr rlp
+
+
+
+
+lpr v
+lrp v
+lrP v
+plr v
+prl v
+rlp
+rlP v
+rpl v
+
+
+
+ALEA BUNE
+00 01 50
+02 03 51 52 53
+10 11 60
+12 61 62
+13 21 63
+20 70
+22 72
+23 73
+30 80 81
+31 32 90 91
+33 71 83
+40 82
+41 42 43 92 93
+
+ALEA PROASTE
+00 01 50
+02 03 51 52 53
+10 11 60
+12 61 62
+33 71 83
+22 72
+20 70
+13 21 63
+30 80 81
+41 42 43 92 93
+23 73
+31 32 82
+40 90 91
+
+
+
+
+conditions = [
+            r >= l   &&                 p <= l                     ||  // plr
+            r >= l   &&   p <= r   &&   p >  l                     ||  // lpr
+            r <  l   &&   p <= r                                   ,   // prl
+
+
+            r >= l   &&   p >  r   &&   p >  l   &&   p <= l + r   ||  // lrp
+            r >= l   &&                               p >  l + r   ||  // lrP
+            r <  l   &&   p >  r   &&   p <= l                     ||  // rpl
+            r <  l   &&   p >  r   &&   p >  l   &&   p <= l + r   ||  // rlp
+            r <  l   &&   p >  r   &&   p >  l   &&   p >  l + r   ,   // rlP
+
+
+            r >= l   &&                 p <= l                     ||  // plr
+            r >= l   &&   p <= r   &&   p >  l                     ||  // lpr
+            r <  l   &&   p <= r                                   ,   // prl
+
+
+            r >= l   &&   p >  r   &&   p >  l   &&   p <= l + r   ||  // lrp
+            r <  l   &&   p >  r   &&   p <= l                     ||  // rpl
+            r <  l   &&   p >  r   &&   p >  l   &&   p <= l + r   ,   // rlp
+
+
+            r >= l   &&                               p >  l + r   ||  // lrP
+            r <  l   &&   p <= r                                   ||  // prl
+            r <  l   &&   p >  r   &&   p >  l   &&   p >  l + r   ,   // rlP
+
+
+            r >= l   &&                 p <= l                     ||  // plr
+            r <  l   &&   p <= r                                   ,   // prl
+
+
+            r >= l   &&                               p >  l + r   ||  // lrP
+            r <  l   &&   p >  r   &&   p <= l                     ||  // rpl
+            r <  l   &&   p >  r   &&   p >  l   &&   p >  l + r   ,   // rlP
+
+
+            r >= l   &&   p >  r   &&   p >  l   &&   p <= l + r   ||  // lrp
+            r <  l   &&   p >  r   &&   p >  l   &&   p <= l + r   ,   // rlp
+
+
+            r >= l   &&                 p <= l                     ||  // plr
+            r <  l   &&   p <= r                                   ||  // prl
+            r <  l   &&   p >  r   &&   p <= l                     ,   // rpl
+
+
+            r >= l   &&   p <= r   &&   p >  l                     ||  // lpr
+            r >= l   &&   p >  r   &&   p >  l   &&   p <= l + r   ||  // lrp
+            r >= l   &&                               p >  l + r   ||  // lrP
+            r <  l   &&   p >  r   &&   p >  l   &&   p <= l + r   ||  // rlp
+            r <  l   &&   p >  r   &&   p >  l   &&   p >  l + r   ,   // rlP
+            
+
+            r >= l   &&                               p >  l + r   ||  // lrP
+            r <  l   &&   p >  r   &&   p >  l   &&   p >  l + r   ,   // rlP
+
+            r >= l   &&   p <= r   &&   p >  l                     ||  // lpr
+            r >= l   &&   p >  r   &&   p >  l   &&   p <= l + r   ||  // lrp
+            r <  l   &&   p >  r   &&   p >  l   &&   p <= l + r   ,   // rlp
+
+
+            r >= l   &&                 p <= l                     ||  // plr
+            r <  l   &&   p <= r                                   ||  // prl
+            r <  l   &&   p >  r   &&   p <= l                     ,   // rpl
+        ],
